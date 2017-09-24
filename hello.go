@@ -56,23 +56,17 @@ func retrieve(w http.ResponseWriter, r *http.Request) {
 		log.Fatal(err)
 	}
 
-	q := datastore.NewQuery("Store")
+var val []*Store
 
 	html := ""
 
-	iterator := datastoreClient.Run(ctx,q)
+	keys, err := datastoreClient.GetAll(ctx, datastore.NewQuery("Store"), &val)
 
-	for {
-		var entity Store
-   	_, err := iterator.Next(&entity)
-
-	if err != nil {
-			http.Error(w, err.Error(), 500)
-			return
-		}
-		html += `
-			<dt>` + entity.Input + `</dt>		`
-}
+	for i, key := range keys {
+	    fmt.Println(key)
+	    fmt.Println(val[i])
+			html = html + val[i]
+	}
 
 	w.Header().Set("Content-Type", "text/html")
         fmt.Fprint(w,html)
