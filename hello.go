@@ -65,7 +65,7 @@ var val []*Store
 	for i, key := range keys {
 	    fmt.Println(key)
 	    fmt.Println(val[i])
-			html = html + val[i]
+			html = html + val[i].Input
 	}
 
 	w.Header().Set("Content-Type", "text/html")
