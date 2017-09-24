@@ -7,6 +7,7 @@ import (
 	"log"
 	"golang.org/x/net/context"
 	"google.golang.org/appengine"
+	"os"
 )
 
 
@@ -17,7 +18,7 @@ func main() {
 
 	ctx := context.Background()
 
-	projectID := "golangproject-180913"
+	projectID := os.Getenv("projectID") //"golangproject-180913"
 
 	var err error
 
@@ -65,7 +66,7 @@ var val []*Store
 	for i, key := range keys {
 	    fmt.Println(key)
 	    fmt.Println(val[i])
-			html = html + val[i].Input
+			html = html + "\n" + val[i].Input
 	}
 
 	w.Header().Set("Content-Type", "text/html")
