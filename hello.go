@@ -100,6 +100,3 @@ func handler(w http.ResponseWriter, r *http.Request) {
 
 	fmt.Fprint(w, "Value = ",param,"\tstored in Database")
 }
-
-fmt.Fprint(w, "Value = ",param,"\tstored in Database")
-}
