@@ -5,7 +5,7 @@ import (
 	"net/http"
 	"cloud.google.com/go/datastore"
 	"log"
-	"golang.org/x/net/context"
+	"context"
 	"google.golang.org/appengine"
 	"os"
 )
@@ -31,7 +31,7 @@ func main() {
 	http.HandleFunc("/save", handler)
 	http.HandleFunc("/retrieve", retrieve)
   log.Fatal(http.ListenAndServe(":8080", nil))
-	appengine.Main()
+	
 }
 
 
